@@ -1,3 +1,5 @@
+#importar re para validaciones de email
+import re
 # Módulo para validaciones de usuario y edad
 def validar_usuario(tipo_usuario, edad):
     if tipo_usuario == "admin":
@@ -39,4 +41,18 @@ def validar_edad(edad):
         "valida": True,
         "mensaje": "\nEdad válida",
         "categoria": categoria
+    }
+def validar_email(email):
+    #Expresión regular para validar email según formato básico
+    patron = r"^[\w\.-]+@[\w\.-]+\.\w+$"
+
+    if not re.match(patron, email):
+        return {
+            "valida": False,
+            "mensaje": "\nCorreo electrónico inválido"
+        }
+
+    return {
+        "valida": True,
+        "mensaje": "\nCorreo válido"
     }
